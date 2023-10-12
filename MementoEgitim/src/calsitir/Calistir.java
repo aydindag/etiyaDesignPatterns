@@ -15,18 +15,18 @@ public class Calistir {
 		MementoYoneticisi mementoYoneticisi = new MementoYoneticisi();
 		mementoYoneticisi.setPersonel(personel);
 
-		mementoYoneticisi.add(); // memento yaratıldı.
-		personel.setAdi("Mehmet");
+		mementoYoneticisi.add(); // personel sıfının ilke halindeki değerin saklanması için memento yaratıldı.
+		personel.setAdi("Mehmet"); // personel sınıfının değişkenlerini değiştiriyoruz.
 		personel.setSoyadi("SOLMAZ");
-		mementoYoneticisi.add(); // memento yaratıldı.
+		mementoYoneticisi.add(); // Yeni değerler için bir memento daha yaratıldı.
+		System.out.println(personel); // yeni halini ekrana basıyoruz.
+		PersonelMemento memento1 = mementoYoneticisi.get(0); // ilk değerlerin olduğu zamanda yaratılan memento
+		PersonelMemento memento2 = mementoYoneticisi.get(1); // değişiklik sonrası zamanında yaratılan memento
+		memento1.getStateFromMemento(); // Personel'i ilk haline çeviriyoruz.
 		System.out.println(personel);
-		PersonelMemento memento1 = mementoYoneticisi.get(0);
-		PersonelMemento memento2 = mementoYoneticisi.get(1);
-		memento1.getStateFromMemento(personel);
+		memento2.getStateFromMemento(); // Personel'i değişiklik yapıldıktan sonraki haline tekrar çeviriyoruz
 		System.out.println(personel);
-		memento2.getStateFromMemento(personel);
-		System.out.println(personel);
-		System.out.println(memento1.isChanged(personel));
-		System.out.println(memento2.isChanged(personel));
+		System.out.println(memento1.isChanged());
+		System.out.println(memento2.isChanged());
 	}
 }

@@ -11,7 +11,10 @@ public class MementoYoneticisi {
 	private Personel personel;
 
 	public void add() {
-		mementolar.add(PersonelMemento.saveStateToMemento(personel));
+		PersonelMemento memento = new PersonelMemento();
+		memento.setPersonel(personel);
+		memento.saveStateToMemento();
+		mementolar.add(memento);
 	}
 
 	public PersonelMemento get() {
